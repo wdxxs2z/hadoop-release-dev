@@ -1,0 +1,7 @@
+---
+final_name: hadoop
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /home/vcap/hadoop-dev
+  
