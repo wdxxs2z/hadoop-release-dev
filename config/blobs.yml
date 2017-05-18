@@ -1,1 +1,117 @@
---- {}
+---
+cairo/cairo-1.12.0.tar.gz:
+  object_id: 2a5de0ce-bffe-44ee-802a-1bba812e6687
+  sha: 63e0d1372a7919956b6d959709dfdf35d3cecc02
+  size: 63084508
+cairo/pango-1.28.4.tar.gz:
+  object_id: 90e7912b-ba4d-49ff-8445-9d5c95bc9604
+  sha: 1619380b9a6681633462f7d52201007d4d1bfafe
+  size: 2098991
+cairo/pixman-0.32.4.tar.gz:
+  object_id: ecb2731d-c277-4685-864b-4af58bda3539
+  sha: 54be89b3453109be0930400e5b13c35c9e9d5e3a
+  size: 817407
+hadoop/hadoop-2.2.0-dependencies.tar.gz:
+  object_id: bb275496-ae52-4ca7-b655-610bc7908ae8
+  sha: 423b6a7a99fe9a39a622611cd1c03e3fea6d3e4c
+  size: 101262827
+hadoop/hadoop-2.2.0.tar.gz:
+  object_id: 5d6e7ba6-d108-4e26-becb-c88bd20751bf
+  sha: 7339da348d9b4a813b1b1d8b6982f3f8755329e4
+  size: 109229073
+fontconfig/fontconfig-2.11.0.tar.gz:
+  object_id: 39380fac-2af6-4ff2-be2a-3adef719a89a
+  sha: 650f8f3b8c7b6fac68c25f379616b5be48be13bf
+  size: 1844487
+freetype/freetype-2.5.2.tar.gz:
+  object_id: f15cd13e-5981-48c3-bca3-6b2407c9de33
+  sha: a0649cab12662370894599a3f3e7fbe4a6598e1c
+  size: 2219466
+confuse/confuse-2.7.tar.gz:
+  object_id: 7ada9675-2489-4d01-ac38-5dcca1a18912
+  sha: b3f74f9763e6c9012476dbd323d083af4be34cad
+  size: 517272
+php5/php-5.5.9.tar.gz:
+  object_id: eb6dcfc3-d121-4a8c-9e14-f40ed728b2b1
+  sha: 378de162efdaeeb725ed38d7fe956c9f0b9084ff
+  size: 16828151
+maven/apache-maven-3.1.1-bin.tar.gz:
+  object_id: 386e902b-f140-4b9b-93cc-1d34caa701a1
+  sha: 630eea2107b0742acb315b214009ba08602dda5f
+  size: 5494427
+zookeeper/zookeeper-3.4.5.tar.gz:
+  object_id: 2528570e-341d-450f-8aec-b53f71b09781
+  sha: fd921575e02478909557034ea922de871926efc7
+  size: 16402010
+apr/apr-1.5.0.tar.gz:
+  object_id: d6b833c2-148e-4cfb-9771-c693037350e6
+  sha: c457adf42502a322967ea0499a150587585e5291
+  size: 1016391
+apr/apr-util-1.5.3.tar.gz:
+  object_id: 3c82f890-5cdb-455c-9ca6-c0042a300b1d
+  sha: bfee2277603c8136e12db5c7be7e9cbbd8794596
+  size: 874462
+zlib/zlib-1.2.8.tar.gz:
+  object_id: 6fcd55cb-4fe4-4139-9a3b-59fdcfd8a01c
+  sha: a4d316c404ff54ca545ea71a27af7dbc29817088
+  size: 571091
+libpng/libpng-1.6.9.tar.gz:
+  object_id: 9edee0c5-ee20-4762-9f5f-c8d65f81c77f
+  sha: 9409588057ac16e18f2c0640f5ed721872bbfce8
+  size: 1329867
+java7/jdk-1.7.0_51.tar.gz:
+  object_id: 47c5faf8-a913-4d27-a1a2-376f6d4e81c8
+  sha: bee3b085a90439c833ce18e138c9f1a615152891
+  size: 138199690
+hbase/hbase-0.94.16.tar.gz:
+  object_id: 1bc68a79-d17e-4781-bfc6-36c6337c2bc2
+  sha: 32dd12ccf9ae46ec38e31b5a08900a0c576c874a
+  size: 58552190
+expat/expat-2.1.0.tar.gz:
+  object_id: 667ea0e6-b451-4bcb-918b-152d4507b567
+  sha: b08197d146930a5543a7b99e871cba3da614f6f0
+  size: 562616
+ganglia/ganglia-3.5.0.tar.gz:
+  object_id: 334b84d3-bfe3-4418-b95f-bc51adeacdb2
+  sha: de81f39f2aaad1c2d1ecf53655a0d0ff08b2a816
+  size: 1234790
+ganglia/ganglia-web-3.5.12.tar.gz:
+  object_id: 233ee77b-a070-4f85-aa62-05cc6873cf1c
+  sha: a514edc99f0c9ae851fe7766ad215a4faab2dd1b
+  size: 1595483
+protobuf/protobuf-2.5.0.tar.gz:
+  object_id: 1a48c76a-6951-4b8b-9aa4-78122032f5a8
+  sha: 7f6ea7bc1382202fb1ce8c6933f1ef8fea0c0148
+  size: 2401901
+freefont/freefont-otf-20120503.tar.gz:
+  object_id: 6721319d-8b3b-494c-a6e2-b83becc63d17
+  sha: dad7600fa9eed4116c2aaa561228e3879565f7aa
+  size: 4487813
+apache2/httpd-2.4.7.tar.gz:
+  object_id: 5f9de678-5ba8-4e36-a167-573155e745bc
+  sha: 9a73783b0f75226fb2afdcadd30ccba77ba05149
+  size: 6747087
+pcre/pcre-8.34.tar.gz:
+  object_id: 9b8b3c05-ccbd-4c16-8eb1-ddf44d5f1e10
+  sha: d46e537337ee70df19084001a4b6815b3d69fe6c
+  size: 1933734
+commons-deamon/commons-daemon-1.0.15-bin.tar.gz:
+  object_id: 5ccd23f9-e13b-45d1-bb69-b329620643ec
+  sha: 82e87d6320f30d2f18bcf6deb7014bfb54020e66
+  size: 232233
+rrdtool/rrdtool-1.4.8.tar.gz:
+  object_id: 5f13f2e1-32ca-4965-9c80-18bafb1f15d6
+  sha: 56d68857f39e70bfa32360947614d8220702ed02
+  size: 1379482
+glib/glib-2.28.6.tar.gz:
+  object_id: 153e9816-597e-4e51-9227-21cfb2af0062
+  sha: b7fca6e1ef46df35d4cb1007d237a25b3932c3a7
+  size: 9983425
+glib/glib-2.15.4.tar.gz:
+  object_id: 06b5e1d2-8628-473c-9683-37a866062c31
+  sha: 244f72f29cabb58c147e1b48fb8dc899f09564de
+  size: 6171676
+commons-daemon/commons-daemon-1.0.15-bin.tar.gz:
+  object_id: 4045cf75-3e0f-4f52-b149-b873b0305db2
+  sha: 82e87d6320f30d2f18bcf6deb7014bfb54020e66
+  size: 232233

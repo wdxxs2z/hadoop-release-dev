@@ -13,7 +13,7 @@ files:
   - freetype/freetype-2.5.2.tar.gz
   - ganglia/ganglia-3.5.0.tar.gz
   - ganglia/ganglia-web-3.5.12.tar.gz
-  - glib/glib-2.28.6.tar.gz
+  - glib/glib-2.15.4.tar.gz
   - libpng/libpng-1.6.9.tar.gz
   - pcre/pcre-8.34.tar.gz
   - rrdtool/rrdtool-1.4.8.tar.gz
