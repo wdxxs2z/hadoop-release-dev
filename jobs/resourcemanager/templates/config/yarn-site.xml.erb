@@ -1,7 +1,7 @@
 <configuration>
   <property>
     <name>yarn.nodemanager.address</name>
-    <value>0.0.0.0:<%= p('nodemanager.port') %></value>
+    <value>0.0.0.0:<%= p('hadoop.nodemanager.port') %></value>
   </property>
   <property>
     <name>yarn.nodemanager.admin-env</name>
@@ -45,11 +45,11 @@
   </property>
   <property>
     <name>yarn.nodemanager.local-dirs</name>
-    <value><%= p('yarn.local_dir')%></value>
+    <value><%= p('hadoop.yarn.local_dir')%></value>
   </property>
   <property>
     <name>yarn.nodemanager.log-dirs</name>
-    <value><%= p('yarn.local_log_dir')%></value>
+    <value><%= p('hadoop.yarn.local_log_dir')%></value>
   </property>
   <property>
     <name>yarn.nodemanager.log-aggregation.compression-type</name>
@@ -69,35 +69,35 @@
   </property>
   <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
-    <value><%= p('nodemanager.resource_memory_mb') %></value>
+    <value><%= p('hadoop.nodemanager.resource_memory_mb') %></value>
   </property>
   <property>
     <name>yarn.nodemanager.resource.cpu-vcores</name>
-    <value><%= p('nodemanager.resource_cpu_vcores') %></value>
+    <value><%= p('hadoop.nodemanager.resource_cpu_vcores') %></value>
   </property>
   <property>
     <name>yarn.nodemanager.vmem-pmem-ratio</name>
-    <value><%= p('nodemanager.vmem_pmem_ratio') %></value>
+    <value><%= p('hadoop.nodemanager.vmem_pmem_ratio') %></value>
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value><%= p('resourcemanager.address') %>:<%= p('resourcemanager.port') %></value>
+    <value><%= spec.address %>:<%= p('hadoop.resourcemanager.port') %></value>
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address</name>
-    <value><%= p('resourcemanager.address') %>:<%= p('resourcemanager.admin_port') %></value>
+    <value><%= spec.address %>:<%= p('hadoop.resourcemanager.admin_port') %></value>
   </property>
   <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value><%= p('resourcemanager.address') %>:<%= p('resourcemanager.resource_tracker_port') %></value>
+    <value><%= spec.address %>:<%= p('hadoop.resourcemanager.resource_tracker_port') %></value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address</name>
-    <value><%= p('resourcemanager.address') %>:<%= p('resourcemanager.scheduler_port') %></value>
+    <value><%= spec.address %>:<%= p('hadoop.resourcemanager.scheduler_port') %></value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value><%= p('resourcemanager.address') %>:<%= p('resourcemanager.webapp_port') %></value>
+    <value><%= spec.address %>:<%= p('hadoop.resourcemanager.webapp_port') %></value>
   </property>
   <property>
     <name>yarn.resourcemanager.am.max-attempts</name>
@@ -109,7 +109,7 @@
   </property>
   <property>
     <name>yarn.log.server.url</name>
-    <value><%= p('jobhistory.address') %>:<%= p('jobhistory.webapp_port') %>/jobhistory/logs</value>
+    <value><%= spec.address %>:<%= link('jobhistory').p('hadoop.jobhistory.webapp_port') %>/jobhistory/logs</value>
   </property>
   <property>
     <name>yarn.log-aggregation-enable</name>
@@ -136,10 +136,10 @@
   </property>
   <property>
     <name>yarn.scheduler.minimum-allocation-mb</name>
-    <value><%= p('yarn.scheduler_minimum_allocation_mb') %></value>
+    <value><%= p('hadoop.yarn.scheduler_minimum_allocation_mb') %></value>
   </property>
   <property>
     <name>yarn.scheduler.minimum-allocation-vcores</name>
-    <value><%= p('yarn.scheduler_minimum_allocation_vcores') %></value>
+    <value><%= p('hadoop.yarn.scheduler_minimum_allocation_vcores') %></value>
   </property>
 </configuration>

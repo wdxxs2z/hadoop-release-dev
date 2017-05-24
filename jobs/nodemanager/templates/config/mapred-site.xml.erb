@@ -5,11 +5,11 @@
   </property>
   <property>
     <name>mapreduce.map.java.opts</name>
-    <value><%= p('mapreduce.map_java_opts') %></value>
+    <value><%= p('hadoop.mapreduce.map_java_opts') %></value>
   </property>
   <property>
     <name>mapreduce.reduce.java.opts</name>
-    <value><%= p('mapreduce.reduce_java_opts') %></value>
+    <value><%= p('hadoop.mapreduce.reduce_java_opts') %></value>
   </property>
   <property>
     <name>mapreduce.task.files.preserve.failedtasks</name>
@@ -41,11 +41,11 @@
   </property>
   <property>
     <name>mapreduce.jobhistory.address</name>
-    <value><%= p('jobhistory.address') %>:<%= p('jobhistory.port') %></value>
+    <value><%= link('jobhistory').instances[0].address %>:<%= link('jobhistory').p('hadoop.jobhistory.port') %></value>
   </property>
   <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value><%= p('jobhistory.address') %>:<%= p('jobhistory.webapp_port') %></value>
+    <value><%= link('jobhistory').instances[0].address %>:<%= link('jobhistory').p('hadoop.jobhistory.webapp_port') %></value>
   </property>
   <property>
     <name>mapreduce.jobhistory.done-dir</name>

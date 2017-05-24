@@ -1,71 +1,39 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
 <configuration>
+  <!-- namenode -->
   <property>
-    <name>dfs.blocksize</name>
-    <value><%= p('dfs.blocksize') %></value>
+    <name>dfs.replication</name>
+    <value><%= p("hadoop.namenode.num_dfs_replicas") %></value>
   </property>
   <property>
-    <name>dfs.block.access.token.enable</name>
+    <name>dfs.replication.max</name>
+    <value><%= p('hadoop.namenode.max_replication') %></value>
+  </property>
+  <property>
+     <name>dfs.name.dir</name>
+     <value><%= p("hadoop.namenode.dfs_name_dir_root") %><%= p("hadoop.namenode.dfs_name_dir") %></value>
+  </property>
+  <property>
+    <name>dfs.webhdfs.enabled</name>
     <value>true</value>
-  </property>
-  <property>
-    <name>dfs.block.local-path-access.user</name>
-    <value>hbase</value>
-  </property>
-  <property>
-    <name>dfs.blockreport.initialDelay</name>
-    <value>120</value>
-  </property>
-  <property>
-    <name>dfs.client.read.shortcircuit</name>
-    <value>true</value>
-  </property>
-  <property>
-    <name>dfs.client.read.shortcircuit.streams.cache.size</name>
-    <value>4096</value>
-  </property>
-  <property>
-    <name>dfs.cluster.administrators</name>
-    <value>hdfs</value>
-  </property>
-  <property>
-    <name>dfs.datanode.address</name>
-    <value>0.0.0.0:<%= p('datanode.port') %></value>
-  </property>
-  <property>
-    <name>dfs.datanode.http.address</name>
-    <value>0.0.0.0:<%= p('datanode.http_port') %></value>
-  </property>
-  <property>
-    <name>dfs.datanode.ipc.address</name>
-    <value>0.0.0.0:<%= p('datanode.ipc_port') %></value>
-  </property>
-  <property>
-    <name>dfs.datanode.balance.bandwidthPerSec</name>
-    <value>6250000</value>
-  </property>
-  <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>file://<%= p('datanode.data_dir') %></value>
-  </property>
-  <property>
-    <name>dfs.datanode.data.dir.perm</name>
-    <value>750</value>
-  </property>
-  <property>
-    <name>dfs.datanode.du.reserved</name>
-    <value>1</value>
-  </property>
-  <property>
-    <name>dfs.datanode.failed.volumes.tolerated</name>
-    <value>0</value>
-  </property>
-  <property>
-    <name>dfs.datanode.max.transfer.threads</name>
-    <value>1024</value>
-  </property>
-  <property>
-    <name>dfs.domain.socket.path</name>
-    <value>/var/run/hdfs/dn_socket</value>
   </property>
   <property>
     <name>dfs.namenode.accesstime.precision</name>
@@ -88,28 +56,8 @@
     <value>1.0f</value>
   </property>
   <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>file://<%= p('namenode.name_dir') %></value>
-  </property>
-  <property>
-    <name>dfs.namenode.checkpoint.dir</name>
-    <value>file://<%= p('namenode.checkpoint_dir') %></value>
-  </property>
-  <property>
-    <name>dfs.namenode.http-address</name>
-    <value>0.0.0.0:<%= p('namenode.http_port') %></value>
-  </property>
-  <property>
-    <name>dfs.https.namenode.https-address</name>
-    <value>0.0.0.0:<%= p('namenode.https_port') %></value>
-  </property>
-  <property>
-    <name>dfs.namenode.secondary.http-address</name>
-    <value>0.0.0.0:<%= p('secondarynamenode.http_port') %></value>
-  </property>
-  <property>
     <name>dfs.namenode.handler.count</name>
-    <value><%= p('namenode.handler_count') %></value>
+    <value><%= p('hadoop.namenode.handler_count') %></value>
   </property>
   <property>
     <name>dfs.namenode.safemode.threshold-pct</name>
@@ -120,35 +68,113 @@
     <value>3</value>
   </property>
   <property>
+    <name>dfs.blockreport.initialDelay</name>
+    <value>120</value>
+  </property>
+  <property>
+    <name>dfs.blocksize</name>
+    <value><%= p('hadoop.namenode.blocksize') %></value>
+  </property>
+  <property>
+    <name>dfs.namenode.checkpoint.dir</name>
+    <value>file://<%= p('hadoop.namenode.checkpoint_dir') %></value>
+  </property>
+  <property>
+    <name>dfs.namenode.http-address</name>
+    <value>0.0.0.0:<%= p('hadoop.namenode.http_port') %></value>
+  </property>
+  <property>
+    <name>dfs.https.namenode.https-address</name>
+    <value>0.0.0.0:<%= p('hadoop.namenode.https_port') %></value>
+  </property>
+  <property>
+    <name>dfs.namenode.secondary.http-address</name>
+    <value>0.0.0.0:<%= p('hadoop.secondarynamenode.http_port') %></value>
+  </property>
+
+  <!-- Datanode -->
+  <property>
+      <name>dfs.datanode.data.dir</name>
+      <value>file://<%= p("hadoop.namenode.dfs_name_dir_root") %><%= p("hadoop.datanode.dfs_data_dir") %></value>
+  </property>
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:<%= p('hadoop.datanode.port') %></value>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:<%= p('hadoop.datanode.http_port') %></value>
+  </property>
+  <property>
+    <name>dfs.datanode.ipc.address</name>
+    <value>0.0.0.0:<%= p('hadoop.datanode.ipc_port') %></value>
+  </property>
+  <property>
+    <name>dfs.datanode.balance.bandwidthPerSec</name>
+    <value>6250000</value>
+  </property>
+  <property>
+    <name>dfs.datanode.data.dir.perm</name>
+    <value>750</value>
+  </property>
+  <property>
+    <name>dfs.datanode.du.reserved</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>dfs.datanode.failed.volumes.tolerated</name>
+    <value>0</value>
+  </property>
+  <property>
+    <name>dfs.datanode.max.transfer.threads</name>
+    <value>1024</value>
+  </property>
+
+  <!-- Journalnode -->
+  <property>
     <name>dfs.journalnode.edits.dir</name>
-    <value><%= p('journalnode.edits_dir') %></value>
+    <value><%= p('hadoop.journalnode.edits_dir') %></value>
   </property>
   <property>
     <name>dfs.journalnode.http-address</name>
-    <value>0.0.0.0:<%= p('journalnode.http_port') %></value>
+    <value>0.0.0.0:<%= p('hadoop.journalnode.http_port') %></value>
+  </property>
+
+  <!-- security -->
+  <property>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
   </property>
   <property>
-    <name>dfs.permissions.superusergroup</name>
-    <value>vcap</value>
+    <name>dfs.client.read.shortcircuit.streams.cache.size</name>
+    <value>4096</value>
   </property>
   <property>
     <name>dfs.permissions.enabled</name>
     <value>true</value>
   </property>
   <property>
-    <name>dfs.replication</name>
-    <value><%= p('dfs.replication') %></value>
-  </property>
-  <property>
-    <name>dfs.replication.max</name>
-    <value><%= p('dfs.max_replication') %></value>
-  </property>
-  <property>
-    <name>dfs.webhdfs.enabled</name>
+    <name>dfs.block.access.token.enable</name>
     <value>true</value>
+  </property>
+  <property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>vcap</value>
+  </property>
+  <property>
+    <name>dfs.block.local-path-access.user</name>
+    <value>hbase</value>
+  </property>
+  <property>
+    <name>dfs.cluster.administrators</name>
+    <value>hdfs</value>
   </property>
   <property>
     <name>fs.permissions.umask-mode</name>
     <value>022</value>
   </property>
+  <property>
+    <name>dfs.domain.socket.path</name>
+    <value>/var/run/hdfs/dn_socket</value>
+  </property>  
 </configuration>

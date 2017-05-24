@@ -1,43 +1,10 @@
 #!/usr/bin/env bash
 
-#
-# Users and Groups
-#
+# job template binding variables
 
-# User which will own the YARN services
-export YARN_USER=yarn
-
-# A common group shared by services
-export HADOOP_GROUP=vcap
-
-#
-# Hadoop Common
-#
-
-# Directory to store the Hadoop configuration files
-export HADOOP_CONF_DIR=$JOB_DIR/config
-
-# Directory to store the Hadoop logs
-export HADOOP_LOG_DIR=$LOG_DIR
-
-# Directory to store the Hadoop process IDs
-export HADOOP_PID_DIR=$RUN_DIR
-
-#
-# Hadoop Service - YARN
-#
-
-# Directory to store the YARN configuration files
-export YARN_CONF_DIR=$JOB_DIR/config
-
-# Directory to store the YARN logs
-export YARN_LOG_DIR=$LOG_DIR
-
-# Directory to store the YARN process ID
-export YARN_PID_DIR=$RUN_DIR
-
-# Space separated list of directories where YARN will store temporary data
-export YARN_LOCAL_DIR=<%= p('yarn.local_dir') %>;
-
-# Space separated list of directories where YARN will store container log data
-export YARN_LOCAL_LOG_DIR=<%= p('yarn.local_log_dir') %>;
+# job name & index of this VM within cluster
+# e.g. JOB_NAME=redis, JOB_INDEX=0
+export NAME='<%= name %>'
+export JOB_INDEX=<%= index %>
+# full job name, like redis/0 or webapp/3
+export JOB_FULL="$NAME/$JOB_INDEX"

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+#
+# Spark Master Properties
+#
+
+JOB_NAME=spark-master
+LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+PIDFILE=$RUN_DIR/$JOB_NAME.pid
+
+# User Profile
+export HADOOP_GROUP=vcap
+export HDFS_USER=hdfs
+export YARN_USER=yarn
+export MAPRED_USER=mapred
+export HBASE_USER=hbase
+export SPARK_USER=spark
+export ZOOKEEPER_USER=zookeeper
+
+<%
+  servers = []
+  p('zookeeper.servers').each do |server|
+    servers << "#{server}:#{p('zookeeper.client_port')}"
+  end
+%>
+
+export SPARK_MASTER_IP=<%= spec.networks.default.ip %>
+export SPARK_LOCAL_IP=<%= spec.networks.default.ip %>
+export ZOOKEEPER_DIR=<%= p("spark.deploy.zookeeper.dir") %>
+export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=<%= servers.join(',') %> -Dspark.deploy.zookeeper.dir=<%= p("spark.deploy.zookeeper.dir") %>"
+
+export SPARK_HOME=/var/vcap/packages/spark
+export SPARK_MASTER_PORT=7077
+export SPARK_MASTER_WEBUI_PORT=8080
+export JAVA_HOME=/var/vcap/packages/java/jdk
+export PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
+export SPARK_JAVA_OPTS="-Xms300m -Xmx512m -XX:MaxPermSize=1g"
+
+#NoSQL - Spark write destinations
+export MONGO_IP=<%= p("nosql.mongodb.host") %>
+export MONGO_PORT=<%= p("nosql.mongodb.port") %>
+export MONGO_DB=<%= p("nosql.mongodb.db") %>
+export MONGO_COLLECTION=<%= p("nosql.mongodb.collection") %>
+export NEO_IP=<%= p("nosql.neo4j.host") %>
+export NEO_PORT=<%= p("nosql.neo4j.port") %>
+export NEO_USER=<%= p("nosql.neo4j.user") %>
+export NEO_PASSWORD=<%= p("nosql.neo4j.password") %>
+export NEO_DB=<%= p("nosql.neo4j.db") %>

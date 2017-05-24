@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e # exit immediately if a simple command exits with a non-zero status
+set -x
+
+# Setup common env vars and folders
+source /var/vcap/jobs/regionserver/helpers/ctl_setup.sh 'regionserver'
+export REGIONSERVER_PID_FILE=$HBASE_PID_DIR/regionserver.pid
+
+case $1 in
+
+  start)
+
+    exec >>$LOG_DIR/ctl.stdout.log \
+        2>>$LOG_DIR/ctl.stderr.log
+
+    pid_guard $REGIONSERVER_PID_FILE $JOB_NAME
+    echo $$ > $REGIONSERVER_PID_FILE
+
+    # Create hadoop supergroup
+    getent group $HADOOP_GROUP &>/dev/null || groupadd $HADOOP_GROUP
+
+    # Create hbase user
+    id $HBASE_USER &>/dev/null || useradd -s /sbin/nologin -r -M $HBASE_USER -G $HADOOP_GROUP
+
+    # Create tmp dir
+    mkdir -p /var/vcap/sys/tmp/hbasemaster
+    chown $HBASE_USER:$HADOOP_GROUP /var/vcap/sys/tmp/hbasemaster
+
+    export HBASE_CONF_DIR=/var/vcap/jobs/regionserver/config
+
+    exec chpst -u $HBASE_USER:$HADOOP_GROUP HBASE_HOME/BIN/hbase <%= p('hbase.master') ? "master" : "regionserver" %> start \
+      1>>$LOG_DIR/$JOB_NAME.stdout.log \
+      2>>$LOG_DIR/$JOB_NAME.stderr.log
+    
+
+    ;;
+
+  stop)
+    kill_and_wait $REGIONSERVER_PID_FILE
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+
+esac
+exit 0

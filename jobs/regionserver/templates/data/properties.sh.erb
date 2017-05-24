@@ -1,37 +1,10 @@
 #!/usr/bin/env bash
 
-#
-# Users and Groups
-#
+# job template binding variables
 
-# User which will own the HBASE services
-export HBASE_USER=hbase
-
-# A common group shared by services
-export HADOOP_GROUP=vcap
-
-#
-# Hadoop Common
-#
-
-# Directory to store the Hadoop configuration files
-export HADOOP_CONF_DIR=$JOB_DIR/config
-
-# Directory to store the Hadoop logs
-export HADOOP_LOG_DIR=$LOG_DIR
-
-# Directory to store the Hadoop process IDs
-export HADOOP_PID_DIR=$RUN_DIR
-
-#
-# Hadoop Service - HBASE
-#
-
-# Directory to store the HBase configuration files
-export HBASE_CONF_DIR=$JOB_DIR/config
-
-# Directory to store the HBase logs
-export HBASE_LOG_DIR=$LOG_DIR
-
-# Directory to store the HBase logs
-export HBASE_PID_DIR=$RUN_DIR
+# job name & index of this VM within cluster
+# e.g. JOB_NAME=redis, JOB_INDEX=0
+export NAME='<%= name %>'
+export JOB_INDEX=<%= index %>
+# full job name, like redis/0 or webapp/3
+export JOB_FULL="$NAME/$JOB_INDEX"

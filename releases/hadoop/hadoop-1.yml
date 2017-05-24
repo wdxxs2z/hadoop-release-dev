@@ -1,0 +1,93 @@
+---
+packages:
+- name: hadoop
+  version: 16f61df8edbbfa6edc17ec34974c39b71b35e2ab
+  fingerprint: 16f61df8edbbfa6edc17ec34974c39b71b35e2ab
+  sha1: bdabed752cbcd2cb26ba196900be1f81f764c2dc
+  dependencies:
+  - java7
+- name: php5
+  version: a25748d832a085ca5bd531bc69ffa2ca7005c310
+  fingerprint: a25748d832a085ca5bd531bc69ffa2ca7005c310
+  sha1: 3d9a46fa1962376d12f58ec55429c7225d6954e4
+  dependencies:
+  - apache2
+- name: zookeeper
+  version: 177ff1602cc9443ecac4d10f7e8878449f9010ba
+  fingerprint: 177ff1602cc9443ecac4d10f7e8878449f9010ba
+  sha1: 08d3ec64936d36dbeec1a494e79f3fe24f80b2ea
+  dependencies: []
+- name: java7
+  version: e3eb976ee016a690c1bc10d721447b9fbdeee1e9
+  fingerprint: e3eb976ee016a690c1bc10d721447b9fbdeee1e9
+  sha1: 5e57d4741c7bb062ce8d4b68e368e68ce780b84f
+  dependencies: []
+- name: hbase
+  version: e062073a854dd0e38a50094ec6e9b3971af08e29
+  fingerprint: e062073a854dd0e38a50094ec6e9b3971af08e29
+  sha1: 674ee812d4c6214f681309dd4725d63b81d0523c
+  dependencies: []
+- name: ganglia
+  version: f099d44882ce10e606be8a432a4ed9cd622b43b6
+  fingerprint: f099d44882ce10e606be8a432a4ed9cd622b43b6
+  sha1: 7ec49bead780a5fb65befe360a222f68a28f7de9
+  dependencies: []
+- name: apache2
+  version: 4e71cf2fc5343bb89e77fa2613ebc8e7704fd643
+  fingerprint: 4e71cf2fc5343bb89e77fa2613ebc8e7704fd643
+  sha1: e2953adceec5154e8cb92abd0ad6e98f95a67c00
+  dependencies: []
+- name: bosh-helpers
+  version: cd197318a9ef88915e72704f7c986d5322de8b72
+  fingerprint: cd197318a9ef88915e72704f7c986d5322de8b72
+  sha1: 8f31e33560f71b017c60ed1adc9ae35cd0402912
+  dependencies: []
+jobs:
+- name: resourcemanager
+  version: 333cf2ef74014fa0a9e7a7b6e21f076c0fc938a9
+  fingerprint: 333cf2ef74014fa0a9e7a7b6e21f076c0fc938a9
+  sha1: 3fb534b99e68879ef58428cd76d813a88e8dbcdc
+- name: regionserver
+  version: 111d500dfa53bc0be418fe9e5058c59aacd3ad8f
+  fingerprint: 111d500dfa53bc0be418fe9e5058c59aacd3ad8f
+  sha1: c0fcf16f6f2fd6390592bf4d3e2cfac6f0811408
+- name: namenode
+  version: e635081ad833150e3a93e09c052b0dbd92990a9e
+  fingerprint: e635081ad833150e3a93e09c052b0dbd92990a9e
+  sha1: 981ce2ca1c530892f5af80f01712e01fa7eb93d9
+- name: historyserver
+  version: fd3998bba06366b14c14f0115cfaf28d7fb685e4
+  fingerprint: fd3998bba06366b14c14f0115cfaf28d7fb685e4
+  sha1: 156f14faf743069f0513c1533c6990499aaaf1e0
+- name: datanode
+  version: e0650c8aac73866fb7839383389cede5db2acac0
+  fingerprint: e0650c8aac73866fb7839383389cede5db2acac0
+  sha1: a1a586850dff2f45910dca05f4a7cd5de0cca9b7
+- name: zookeeper
+  version: 0ad9fa9197482ad7e6d772d6fdfde13dd4da3bbf
+  fingerprint: 0ad9fa9197482ad7e6d772d6fdfde13dd4da3bbf
+  sha1: f23d0fd002e99057a2496634ffb5b5bd3240df76
+- name: gangliaweb
+  version: bcd6713a5f4f3ba0b7daef881f571a2d2452380a
+  fingerprint: bcd6713a5f4f3ba0b7daef881f571a2d2452380a
+  sha1: 09d4fe8e49a05f67a7701ad0bf946428851106ce
+- name: nodemanager
+  version: 826bbc79b4f12b00a9252b2e6e4f087ec06ca1fd
+  fingerprint: 826bbc79b4f12b00a9252b2e6e4f087ec06ca1fd
+  sha1: 71ddf94548ec3b8d543d15cb26634ae4e621a210
+- name: gangliamond
+  version: d1ccf13f52dabb90ce3066d9114eaddaadd8601a
+  fingerprint: d1ccf13f52dabb90ce3066d9114eaddaadd8601a
+  sha1: 936e50881fe3aff71d2c833bfc24ec695511d617
+- name: gangliametad
+  version: 515ba02f997c0f87ebb5951e0e4d25b2eb5f78ad
+  fingerprint: 515ba02f997c0f87ebb5951e0e4d25b2eb5f78ad
+  sha1: 521d9697286c1af3fdb760f74ae00f87040df3b8
+- name: secondarynamenode
+  version: 21e7f15211bdf9594634087c02b803f07f8f8314
+  fingerprint: 21e7f15211bdf9594634087c02b803f07f8f8314
+  sha1: ac7a0a32c7dfa9bea1b3609583cba5f2adb191f8
+commit_hash: 63a7d60d
+uncommitted_changes: true
+name: hadoop
+version: '1'

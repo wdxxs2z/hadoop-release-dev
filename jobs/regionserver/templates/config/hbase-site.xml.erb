@@ -1,5 +1,17 @@
 <configuration>
   <property>
+    <name>hbase.client.default.rpc.codec</name>
+    <value></value>
+  </property>
+  <property>
+    <name>hbase.regionserver.hostname</name>
+    <value><%= spec.address %></value>
+  </property>
+  <property>
+    <name>hbase.master.hostname</name>
+    <value><%= spec.address %></value>
+  </property>
+  <property>
     <name>dfs.support.append</name>
     <value>true</value>
   </property>
@@ -61,7 +73,7 @@
   </property>
   <property>
     <name>hbase.rootdir</name>
-    <value>hdfs://<%= p('dfs.address') %>:<%= p('dfs.port') %>/apps/hbase/data</value>
+    <value>hdfs://<%= link('namenode').instances[0].address %>:<%= link('namenode').p('hadoop.namenode.port') %>/apps/hbase/data</value>
   </property>
   <property>
     <name>hbase.rpc.engine</name>
@@ -77,7 +89,7 @@
   </property>
   <property>
     <name>hbase.superuser</name>
-    <value>hbase</value>
+    <value>vcap</value>
   </property>
   <property>
     <name>hbase.tmp.dir</name>
@@ -85,11 +97,11 @@
   </property>
   <property>
     <name>hbase.zookeeper.property.clientPort</name>
-    <value>2181</value>
+    <value><%= link('zookeeper').p('client_port') %></value>
   </property>
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value><%= p('zookeeper.servers').join(',') %></value>
+    <value><%= link("zookeeper").instances.map do |instance| instance.address end .join(',') %></value>
   </property>
   <property>
     <name>hbase.zookeeper.useMulti</name>

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+#
+# Hadoop Namenode Properties
+#
+
+
+# Custom Config
+JOB_NAME=namenode
+LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+PIDFILE=$RUN_DIR/$JOB_NAME.pid
+
+# User Profile
+export HADOOP_GROUP=vcap
+export HDFS_USER=hdfs
+export YARN_USER=yarn
+export MAPRED_USER=mapred
+export HBASE_USER=hbase
+export SPARK_USER=spark
+export ZOOKEEPER_USER=zookeeper
+
+# System Environment
+export HADOOP_CONF_DIR=$JOB_DIR/config
+export HADOOP_LOG_DIR=$LOG_DIR
+export HADOOP_PID_DIR=$RUN_DIR
+export HBASE_CONF_DIR=$JOB_DIR/config
+export HBASE_LOG_DIR=$LOG_DIR
+export HBASE_PID_DIR=$RUN_DIR
+export HBASE_HOME=/var/vcap/packages/hbase
+export JAVA_HOME=/var/vcap/packages/java/jdk
+export PATH=$JAVA_HOME/bin:$HBASE_HOME/bin:$HBASE_HOME/sbin:$PATH
+
