@@ -20,13 +20,13 @@ export ZOOKEEPER_USER=zookeeper
 
 <%
   servers = []
-  p('zookeeper.servers').each do |server|
-    servers << "#{server}:#{p('zookeeper.client_port')}"
+  link("peers").instances.each do |instance|
+    servers << "#{instance.address}:#{link('peers').p('client_port')}"
   end
 %>
 
-export SPARK_MASTER_IP=<%= spec.networks.default.ip %>
-export SPARK_LOCAL_IP=<%= spec.networks.default.ip %>
+export SPARK_MASTER_IP=<%= spec.address %>
+export SPARK_LOCAL_IP=<%= spec.address %>
 export ZOOKEEPER_DIR=<%= p("spark.deploy.zookeeper.dir") %>
 export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=<%= servers.join(',') %> -Dspark.deploy.zookeeper.dir=<%= p("spark.deploy.zookeeper.dir") %>"
 

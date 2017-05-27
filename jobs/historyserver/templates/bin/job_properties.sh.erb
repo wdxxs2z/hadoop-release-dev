@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Hadoop Nodemanager Properties
+# Hadoop Historyserver Properties
 #
 
 JOB_NAME=historyserver
@@ -19,7 +19,7 @@ export SPARK_USER=spark
 export ZOOKEEPER_USER=zookeeper
 
 export HADOOP_HOME=/var/vcap/packages/hadoop
-export HADOOP_CONF_DIR=/var/vcap/jobs/nodemanager/config
+export HADOOP_CONF_DIR=/var/vcap/jobs/historyserver/config
 export HADOOP_COMMON_LIB_NATIVE_DIR={$HADOOP_HOME}/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
 export HADOOP_NAMENODE_ROOT=<%= p("hadoop.namenode.dfs_name_dir_root") %>

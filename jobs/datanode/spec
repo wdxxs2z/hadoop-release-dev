@@ -69,7 +69,7 @@ properties:
     default: 8010
   hadoop.datanode.dfs_data_dir:
     description: dfs data directory
-    default: /cache/hdfs/dfs/data
+    default: /cache/hadoop/dfs/data
   hadoop.datanode.port:
     description: Datanode port
     default: 50010

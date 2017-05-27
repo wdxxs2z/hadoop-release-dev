@@ -12,6 +12,14 @@
     <value><%= spec.address %></value>
   </property>
   <property>
+    <name>hbase.regionserver.port</name>
+    <value>16022</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.info.port</name>
+    <value>16033</value>
+  </property>
+  <property>
     <name>dfs.support.append</name>
     <value>true</value>
   </property>
@@ -97,11 +105,11 @@
   </property>
   <property>
     <name>hbase.zookeeper.property.clientPort</name>
-    <value><%= link('zookeeper').p('client_port') %></value>
+    <value><%= link('peers').p('client_port') %></value>
   </property>
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value><%= link("zookeeper").instances.map do |instance| instance.address end .join(',') %></value>
+    <value><%= link("peers").instances.map do |instance| instance.address end .join(',') %></value>
   </property>
   <property>
     <name>hbase.zookeeper.useMulti</name>
@@ -118,5 +126,9 @@
   <property>
     <name>zookeeper.znode.parent</name>
     <value>/hbase-unsecure</value>
+  </property>
+  <property>  
+    <name>hbase.master.info.port</name>  
+    <value>60010</value>  
   </property>
 </configuration>

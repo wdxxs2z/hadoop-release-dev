@@ -29,32 +29,29 @@ mkdir -p $HADOOP_NAMENODE_ROOT
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
 
-# Set the hostname
-# hostname <%=discover_external_ip %>
+# Create hadoop supergroup
+getent group $HADOOP_GROUP &>/dev/null || groupadd $HADOOP_GROUP
+
+# Create users
+id $HDFS_USER &>/dev/null || useradd -s /sbin/nologin -r -M $HDFS_USER -G $HADOOP_GROUP
+id $YARN_USER &>/dev/null || useradd -s /sbin/nologin -r -M $YARN_USER -G $HADOOP_GROUP
+id $MAPRED_USER &>/dev/null || useradd -s /sbin/nologin -r -M $MAPRED_USER -G $HADOOP_GROUP
+
+chown --recursive $MAPRED_USER:$HADOOP_GROUP $LOG_DIR
+chown --recursive $MAPRED_USER:$HADOOP_GROUP $RUN_DIR
+
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /mr-history/tmp
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /mr-history/tmp
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /mr-history/done
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /mr-history/done
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chown -R $MAPRED_USER:$HADOOP_GROUP /mr-history
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /app-logs
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /app-logs
+chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chown $YARN_USER:$HADOOP_GROUP /app-logs
 
 case $1 in
 
   start)
-
-    # Create hadoop supergroup
-    getent group $HADOOP_GROUP &>/dev/null || groupadd $HADOOP_GROUP
-
-    # Create users
-    id $HDFS_USER &>/dev/null || useradd -s /sbin/nologin -r -M $HDFS_USER -G $HADOOP_GROUP
-    id $YARN_USER &>/dev/null || useradd -s /sbin/nologin -r -M $YARN_USER -G $HADOOP_GROUP
-    id $MAPRED_USER &>/dev/null || useradd -s /sbin/nologin -r -M $MAPRED_USER -G $HADOOP_GROUP
-
-    chown --recursive $MAPRED_USER:$HADOOP_GROUP $LOG_DIR
-    chown --recursive $MAPRED_USER:$HADOOP_GROUP $RUN_DIR
-    
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /mr-history/tmp
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /mr-history/tmp
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /mr-history/done
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /mr-history/done
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chown -R $MAPRED_USER:$HADOOP_GROUP /mr-history
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /app-logs
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /app-logs
-    chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chown $YARN_USER:$HADOOP_GROUP /app-logs
 
     exec chpst -u $MAPRED_USER:$HADOOP_GROUP $HADOOP_HOME/bin/mapred --config $YARN_CONF_DIR historyserver \
     1>>$LOG_DIR/$JOB_NAME.stdout.log \
@@ -65,21 +62,8 @@ case $1 in
 
   stop)
 
+    kill_and_wait $PIDFILE
 
-    if [ -f $PIDFILE ]; then
-      TARGET_PID=`cat $PIDFILE`
-      if kill -0 $TARGET_PID > /dev/null 2>&1; then
-        kill $TARGET_PID
-        if kill -0 $TARGET_PID > /dev/null 2>&1; then
-          echo "$JOB_NAME did not stop gracefully: killing with kill -9"
-          kill -9 $TARGET_PID
-        fi
-      else
-        echo no $JOB_NAME to stop
-      fi
-    else
-      echo no $JOB_NAME to stop
-    fi
     ;;
 
 

@@ -11,7 +11,6 @@ mkdir -p $RUN_DIR
 mkdir -p $ZOOKEEPER_DIR
 
 # Set the hostname
-hostname <%= index %>.<%= name %>.<%= spec.networks.methods(false).grep(/[^=]$/).first.to_s %>.<%= spec.deployment %>.<%= spec.dns_domain_name %>
 
 case $1 in
 
@@ -24,7 +23,7 @@ case $1 in
 
     exec chpst -u vcap:vcap $SPARK_HOME/bin/spark-class \
          org.apache.spark.deploy.master.Master \
-         --ip `hostname` --port <%= p("spark.master.port") %> --webui-port $SPARK_MASTER_WEBUI_PORT \
+         --ip <%= spec.address %> --port <%= p("spark.master.port") %> --webui-port $SPARK_MASTER_WEBUI_PORT \
          1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
 

@@ -3,7 +3,7 @@ name: nodemanager
 
 templates:
   bin/job_properties.sh.erb: bin/job_properties.sh
-  bin/nodemanager_ctl.erb: bin/namenode_ctl
+  bin/nodemanager_ctl.erb: bin/nodemanager_ctl
   bin/monit_debugger: bin/monit_debugger
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
@@ -40,6 +40,9 @@ consumes:
   - jobhistory.webapp_port
 
 properties:
+  hadoop.namenode.port:
+    description: The port to listen on
+    default: 8020
   hadoop.namenode.num_dfs_replicas:
     description: Number of dfs replicas
     default: 3

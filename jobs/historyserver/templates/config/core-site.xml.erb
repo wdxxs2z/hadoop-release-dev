@@ -21,7 +21,7 @@
   <!-- hadoop namenode setting -->
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://<%= spec.ip %>:<%= p('hadoop.namenode.port') %></value>
+    <value>hdfs://<%= link('namenode').instances[0].address %>:<%= link('namenode').p('hadoop.namenode.port') %></value>
   </property>
   <property>
     <name>fs.trash.interval</name>

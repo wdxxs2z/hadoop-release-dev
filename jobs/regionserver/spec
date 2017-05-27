@@ -32,14 +32,12 @@ consumes:
   - hadoop.namenode.port
 - name: regionserver
   type: regionserver
-- name: zookeeper
-  type: zookeeper
+- name: peers
+  type: zookeeper_peers
   properties:
   - client_port
 
 properties:
-  zookeeper.servers:
-    description: List of all zookeeper server host IP/hostnames
   hbase.master:
     description: Start HBase in master mode. Defaults to regionserver
     default: false

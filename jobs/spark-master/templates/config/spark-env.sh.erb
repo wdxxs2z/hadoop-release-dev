@@ -22,14 +22,15 @@
 
 <%
   servers = []
-  p('zookeeper.servers').each do |server|
-    servers << "#{server}:#{p('zookeeper.client_port')}"
+  link('peers').instances.each do |instance|
+    servers << "#{instance.address}:#{link('peers').p('client_port')}"
   end
 %>
 
-SPARK_MASTER_IP=<%= p("spark.master.host") %>
+SPARK_MASTER_IP=<%= spec.address %>
 SPARK_MASTER_PORT=<%= p("spark.master.port") %>
 SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=<%= servers.join(',') %> -Dspark.deploy.zookeeper.dir=<%= p("spark.deploy.zookeeper.dir") %>"
 
 SPARK_WORKER_DIR=<%= p("spark.worker.dir") %>
 SPARK_LOCAL_DIRS=<%= p("spark.local.dirs") %>
+SPARK_WORKER_WEBUI_PORT=8089

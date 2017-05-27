@@ -10,9 +10,12 @@ mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
 mkdir -p $SPARK_WORK_DIR
 
-# Set the hostname
-hostname <%= index %>.<%= name %>.<%= spec.networks.methods(false).grep(/[^=]$/).first.to_s %>.<%= spec.deployment %>.<%= spec.dns_domain_name %>
-
+<%
+  masters = []
+  link('spark-master').instances.each do |instance|
+    masters << "#{instance.address}:#{link('spark-master').p('spark.master.port')}"
+  end
+%>
 
 case $1 in
 
@@ -24,7 +27,7 @@ case $1 in
     chown --recursive vcap:vcap $SPARK_PACKAGE_DATA
 
     exec chpst -u vcap:vcap $SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker \
-         spark://<%= p("spark.masters") %> \
+         spark://<%= masters.join(',') %> --webui-port 8089 \
          1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
 

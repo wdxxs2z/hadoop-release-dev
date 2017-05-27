@@ -78,7 +78,7 @@ properties:
     default: 50075
   hadoop.datanode.dfs_data_dir:
     description: dfs data directory
-    default: /cache/hdfs/dfs/data
+    default: /cache/hadoop/dfs/data
 
   hadoop.secondarynamenode.http_port:
     description: Secondary Namenode HTTP port

@@ -12,13 +12,18 @@ templates:
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/spark-env.sh.erb: config/spark-env.sh
   config/spark-defaults.conf.erb: config/spark-defaults.conf
+
+consumes:
+- name: peers
+  type: zookeeper_peers
+  properties:
+  - client_port
+- name: spark-master
+  type: spark-master
+  properties:
+  - spark.master.port
+
 properties:
-  spark.master.host:
-    description: The Hostname or address of the Spark master
-    default: 0.spark-master.default.spark-aws-ec2.bosh
-  spark.masters:
-    description: List of all Spark Masters
-    default: 0.spark-master.default.spark-aws-ec2.bosh:7077
   spark.master.port:
     description: The port to listen on
     default: 7077

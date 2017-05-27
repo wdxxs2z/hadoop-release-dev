@@ -129,6 +129,10 @@
     <name>dfs.datanode.max.transfer.threads</name>
     <value>1024</value>
   </property>
+  <property>
+    <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+    <value>false</value>
+  </property>
 
   <!-- Journalnode -->
   <property>
@@ -173,8 +177,10 @@
     <name>fs.permissions.umask-mode</name>
     <value>022</value>
   </property>
+ <!-- 
   <property>
     <name>dfs.domain.socket.path</name>
     <value>/var/run/hdfs/dn_socket</value>
   </property>  
+ -->
 </configuration>

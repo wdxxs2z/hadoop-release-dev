@@ -42,6 +42,9 @@ consumes:
   - hadoop.resourcemanager.webapp_port
 
 properties:
+  hadoop.namenode.port:
+    description: The port to listen on
+    default: 8020
   hadoop.namenode.num_dfs_replicas:
     description: Number of dfs replicas
     default: 3
