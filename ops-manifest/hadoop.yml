@@ -1,0 +1,743 @@
+---
+name: hadoop
+metadata_version: '1.8'
+product_version: 0.1.21
+minimum_version_for_upgrade: 0.1.0
+
+stemcell_criteria:
+  version: '3363.10'
+  os: ubuntu-trusty
+  requires_cpi: false'
+  
+releases:
+- name: hadoop
+  file: hadoop-1+dev.22.tgz
+  version: '1+dev.22'
+- name: zookeeper
+  file: zookeeper-release-0.0.3.tgz
+  version: '0.0.3'
+  
+rank: 1
+label: Hadoop Big Data Cluster(Beta)
+
+icon_image: |
+  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   
+
+form_types:
+- name: Zookeeper Cluster Configuration
+  label: Zookeeper Configuration
+  description: zookeeper cluster config
+  property_inputs:
+  - reference: ".properties.autopurge_purge_interval"
+    label: Autopurge Purge Interval
+    description: 'The time interval in hours for which the purge task has to be triggered'
+  - reference: ".properties.autopurge_snap_retain_count"
+    label: Autopurge Snap Retain Count
+    description: 'Number of most recent snapshots to retain'
+  - reference: ".properties.client_port"
+    label: Client Port
+    description: 'The port to listen for client connections'
+  - reference: ".properties.cnx_timeout"
+    label: Cnx Timeout
+    description: 'Sets the timeout value for opening connections for leader election notifications'
+  - reference: ".properties.election_algorim"
+    label: Election Algorim
+    description: 'Election implementation to use'
+  - reference: ".properties.global_outstanding_limit"
+    label: Global Outstanding Limit
+    description: 'Throttle outstanding client requests'
+  - reference: ".properties.init_limit"
+    label: Init Limit
+    description: 'Amount of time, in ticks, to allow followers to connect and sync to a leader'
+  - reference: ".properties.leader_election_port"
+    label: Leader Election Port
+    description: 'Apache Zookeeper Client leader election port'
+  - reference: ".properties.max_client_connections"
+    label: Max Client Connections
+    description: 'Limits the number of concurrent connections that a single client may make to a single member of the ZooKeeper ensemble'
+  - reference: ".properties.max_session_timeout"
+    label: Max Session Timeout
+    description: 'The maximum session timeout in milliseconds that the server will allow the client to negotiate'
+  - reference: ".properties.min_session_timeout"
+    label: Min Session Timeout
+    description: 'the minimum session timeout in milliseconds that the server will allow the client to negotiate'
+  - reference: ".properties.pre_allocation_size"
+    label: Pre Allocation Size
+    description: 'preAllocSize kilobytes for transaction log blocks'
+  - reference: ".properties.snap_count"
+    label: Snap Count
+    description: 'Number of transactions before a snapshot is started and a new transaction log file is created'
+  - reference: ".properties.sync_limit"
+    label: Sync Limit
+    description: 'Amount of time, in ticks, to allow followers to sync with ZooKeeper'
+  - reference: ".properties.tick_time"
+    label: Tick Time
+    description: 'The length of a single tick, which is the basic time unit used by ZooKeeper, as measured in milliseconds'
+  - reference: ".properties.warning_threshold_ms"
+    label: Warning Threshold Ms
+    description: 'A warning message will be output to the log whenever an fsync in the Transactional Log (WAL) takes longer than this value'
+- name: HDFS Cluster Configuration
+  label: HDFS Configuration
+  description: hdfs cluster config
+  property_inputs:
+  - reference: ".properties.dfs_blocksize"
+    label: DFS Blocksize
+    description: 'HDFS default block size'
+  - reference: ".properties.checkpoint_size"
+    label: Checkpoint Size
+    description: 'HDFS default checkpoint size'
+  - reference: ".properties.max_replication"
+    label: Max Replication
+    description: 'HDFS maximum replication'
+  - reference: ".properties.replication"
+    label: Replication
+    description: 'HDFS replication'
+  - reference: ".properties.trash_interval"
+    label: Trash Interval
+    description: 'HDFS Trash interval'
+  - reference: ".properties.handler_count"
+    label: Handler Count
+    description: 'The number of server threads for the namenode'
+- name: YARN Cluster Configuration
+  label: YARN Configuration
+  description: yarn cluster config
+  property_inputs:
+  - reference: ".properties.scheduler_minimum_allocation_mb"
+    label: Scheduler Minimum Allocation
+    description: 'Scheduler Minimum Allocation'
+  - reference: ".properties.scheduler_minimum_allocation_vcores"
+    label: Scheduler Minimum Allocation Vcores
+    description: 'Scheduler Minimum Allocation Vcores'
+  - reference: ".properties.map_java_opts"
+    label: Map Java Opts
+    description: 'MapReduce map java opts'
+  - reference: ".properties.reduce_java_opts"
+    label: Map Java Opts
+    description: 'MapReduce reduce_java_opts'
+  - reference: ".properties.resource_cpu_vcores"
+    label: Resource Cpu Vcores
+    description: 'Nodemanager resource cpu vcores'
+  - reference: ".properties.resource_memory_mb"
+    label: Resource Memory
+    description: 'Nodemanager resource memory mb'
+  - reference: ".properties.vmem_pmem_ratio"
+    label: VMem PMem Ratio
+    description: 'Nodemanager vmem pmem ratio'
+- name: SPARK Cluster Configuration
+  label: SPARK Configuration
+  description: spark cluster config
+  property_inputs:
+  - reference: ".properties.spark_driver_memory"
+    label: Driver memory
+    description: 'Spark Driver memory'
+  - reference: ".properties.spark_executor_memory"
+    label: Executor memory
+    description: 'Spark Executor memory'
+  - reference: ".properties.spark_mongodb_host"
+    label: Mongodb Host
+    description: 'MongoDB cluster IP'
+  - reference: ".properties.spark_mongodb_port"
+    label: Mongodb Port
+    description: 'MongoDB cluster PORT'
+  - reference: ".properties.spark_mongodb_db"
+    label: Mongodb DB
+    description: 'MongoDB cluster Database'
+  - reference: ".properties.spark_mongodb_collection"
+    label: Mongodb Collection
+    description: 'MongoDB cluster Collection'
+    
+job_types:
+- name: peers
+  label: zookeeper_peers
+  resource_label: zookeeper peers
+  description: zookeeper cluster
+  templates:
+  - name: zookeeper
+    release: zookeeper
+  max_in_flight: 1
+  dynamic_ip: 0
+  static_ip: 1
+  single_az_only: true
+  instance_definition:
+    name: instances
+    type: integer
+    default: 1
+    configurable: true
+    constraints:
+      min: 1
+      max: 5
+  resource_definitions:
+  - name: ram
+    label: RAM
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    label: Ephemeral Disk
+    configurable: true
+    default: 1024
+  - name: persistent_disk
+    type: integer
+    label: Persistent Disk
+    configurable: true
+    default: 16384
+    constraints:
+      min: 4096
+  - name: cpu
+    type: integer
+    label: CPU
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+      power_of_two: true
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    label: VM credentials
+    default:
+      identity: vcap
+  manifest: |
+    autopurge_purge_interval: (( .properties.autopurge_purge_interval.value ))
+    autopurge_snap_retain_count: (( .properties.autopurge_snap_retain_count.value ))
+    client_port: (( .properties.client_port.value ))
+    cnx_timeout: (( .properties.cnx_timeout.value ))
+    election_algorim: (( .properties.election_algorim.value ))
+    global_outstanding_limit: (( .properties.global_outstanding_limit.value ))
+    init_limit: (( .properties.init_limit.value ))
+    leader_election_port: (( .properties.leader_election_port.value ))
+    max_client_connections: (( .properties.max_client_connections.value ))
+    max_session_timeout: (( .properties.max_session_timeout.value ))
+    min_session_timeout: (( .properties.min_session_timeout.value ))
+    pre_allocation_size: (( .properties.pre_allocation_size.value ))
+    snap_count: (( .properties.snap_count.value ))
+    sync_limit: (( .properties.sync_limit.value ))
+    tick_time: (( .properties.tick_time.value ))
+    warning_threshold_ms: (( .properties.warning_threshold_ms.value ))   
+- name: hdfs
+  label: hdfs
+  resource_label: hdfs
+  description: hdfs
+  templates:
+  - name: namenode
+    release: hadoop
+  max_in_flight: 1
+  dynamic_ip: 0
+  static_ip: 1
+  single_az_only: true
+  instance_definition:
+    name: instances
+    type: integer
+    default: 1
+    configurable: true
+    constraints:
+      min: 0
+      max: 6
+  resource_definitions:
+  - name: ram
+    label: RAM
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    label: Ephemeral Disk
+    configurable: true
+    default: 1024
+  - name: persistent_disk
+    type: integer
+    label: Persistent Disk
+    configurable: true
+    default: 16384
+    constraints:
+      min: 4096
+  - name: cpu
+    type: integer
+    label: CPU
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+      power_of_two: true
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    label: VM credentials
+    default:
+      identity: vcap
+  manifest: |
+    hadoop:
+      namenode:
+        num_dfs_replicas: (( .properties.replication.value ))
+        max_replication: (( .properties.max_replication.value ))
+        trash_interval: (( .properties.trash_interval.value ))
+        handler_count: (( .properties.handler_count.value ))
+        blocksize: (( .properties.dfs_blocksize.value ))
+        checkpoint_size: (( .properties.checkpoint_size.value ))        
+- name: secondarynamenode
+  label: secondarynamenode
+  resource_label: secondarynamenode
+  description: secondarynamenode
+  templates:
+  - name: secondarynamenode
+    release: hadoop
+  max_in_flight: 1
+  dynamic_ip: 0
+  static_ip: 1
+  single_az_only: true
+  instance_definition:
+    name: instances
+    type: integer
+    default: 1
+    configurable: true
+    constraints:
+      min: 0
+      max: 6
+  resource_definitions:
+  - name: ram
+    label: RAM
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    label: Ephemeral Disk
+    configurable: true
+    default: 1024
+  - name: persistent_disk
+    type: integer
+    label: Persistent Disk
+    configurable: true
+    default: 16384
+    constraints:
+      min: 4096
+  - name: cpu
+    type: integer
+    label: CPU
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+      power_of_two: true
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    label: VM credentials
+    default:
+      identity: vcap
+  manifest: |
+    hadoop:
+      namenode:
+        num_dfs_replicas: (( .properties.replication.value ))
+        max_replication: (( .properties.max_replication.value ))
+        trash_interval: (( .properties.trash_interval.value ))
+        handler_count: (( .properties.handler_count.value ))
+        blocksize: (( .properties.dfs_blocksize.value ))
+        checkpoint_size: (( .properties.checkpoint_size.value ))       
+- name: yarn
+  label: yarn
+  resource_label: yarn
+  description: yarn
+  templates:
+  - name: resourcemanager
+    release: hadoop
+  - name: historyserver
+    release: hadoop
+  - name: regionserver
+    release: hadoop
+    provides: |
+      regionserver: {as: yarn}
+    consumes: |
+      regionserver: {from: slave}      
+  max_in_flight: 1
+  dynamic_ip: 0
+  static_ip: 1
+  single_az_only: true
+  instance_definition:
+    name: instances
+    type: integer
+    default: 1
+    configurable: true
+    constraints:
+      min: 0
+      max: 6
+  resource_definitions:
+  - name: ram
+    label: RAM
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    label: Ephemeral Disk
+    configurable: true
+    default: 1024
+  - name: persistent_disk
+    type: integer
+    label: Persistent Disk
+    configurable: true
+    default: 16384
+    constraints:
+      min: 4096
+  - name: cpu
+    type: integer
+    label: CPU
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+      power_of_two: true
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    label: VM credentials
+    default:
+      identity: vcap
+  manifest: |
+    hadoop:
+      namenode:
+        num_dfs_replicas: (( .properties.replication.value ))
+        max_replication: (( .properties.max_replication.value ))
+        trash_interval: (( .properties.trash_interval.value ))
+        handler_count: (( .properties.handler_count.value ))
+        blocksize: (( .properties.dfs_blocksize.value ))
+        checkpoint_size: (( .properties.checkpoint_size.value ))      
+      yarn:
+        scheduler_minimum_allocation_mb: (( .properties.scheduler_minimum_allocation_mb.value ))
+        scheduler_minimum_allocation_vcores: (( .properties.scheduler_minimum_allocation_vcores.value ))
+      mapreduce:
+        map_java_opts: (( .properties.map_java_opts.value ))
+        reduce_java_opts: (( .properties.reduce_java_opts.value ))
+      nodemanager:
+        resource_memory_mb: (( .properties.resource_memory_mb.value ))
+        resource_cpu_vcores: (( .properties.resource_cpu_vcores.value ))
+        vmem_pmem_ratio: (( .properties.vmem_pmem_ratio.value ))
+    hbase:
+      master: true     
+- name: spark-master
+  label: spark-master
+  resource_label: spark-master
+  description: spark-master
+  templates:
+  - name: spark-master
+    release: hadoop
+  max_in_flight: 1
+  dynamic_ip: 0
+  static_ip: 1
+  single_az_only: true
+  instance_definition:
+    name: instances
+    type: integer
+    default: 1
+    configurable: true
+    constraints:
+      min: 0
+      max: 6
+  resource_definitions:
+  - name: ram
+    label: RAM
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    label: Ephemeral Disk
+    configurable: true
+    default: 1024
+  - name: persistent_disk
+    type: integer
+    label: Persistent Disk
+    configurable: true
+    default: 16384
+    constraints:
+      min: 4096
+  - name: cpu
+    type: integer
+    label: CPU
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+      power_of_two: true
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    label: VM credentials
+    default:
+      identity: vcap
+  manifest: |
+    spark:
+      master:
+        port: 7077
+      deploy:
+        zookeeper:
+          dir: /spark
+      driver:
+        memory: (( .properties.spark_driver_memory.value ))
+      executor:
+        memory: (( .properties.spark_executor_memory.value ))
+      worker:
+        dir: /var/vcap/store/spark/worker
+      local:
+        dirs: /var/vcap/store/spark/local
+    nosql:
+      mongodb: 
+        host: (( .properties.spark_mongodb_host.value ))
+        port: (( .properties.spark_mongodb_port.value ))
+        db: (( .properties.spark_mongodb_db.value ))
+        collection: (( .properties.spark_mongodb_collection.value ))
+- name: slave
+  label: slave
+  resource_label: slave
+  description: slave
+  templates:
+  - name: datanode
+    release: hadoop
+  - name: nodemanager
+    release: hadoop
+  - name: regionserver
+    release: hadoop
+    provides: |
+      hmaster: nil
+      regionserver: {as: slave}
+    consumes: |
+      regionserver: {from: slave}
+  - name: spark-slave
+    release: hadoop
+  max_in_flight: 1
+  dynamic_ip: 0
+  static_ip: 1
+  single_az_only: true
+  instance_definition:
+    name: instances
+    type: integer
+    default: 1
+    configurable: true
+    constraints:
+      min: 0
+      max: 6
+  resource_definitions:
+  - name: ram
+    label: RAM
+    type: integer
+    configurable: true
+    default: 4096
+    constraints:
+      min: 1024
+  - name: ephemeral_disk
+    type: integer
+    label: Ephemeral Disk
+    configurable: true
+    default: 1024
+  - name: persistent_disk
+    type: integer
+    label: Persistent Disk
+    configurable: true
+    default: 16384
+    constraints:
+      min: 4096
+  - name: cpu
+    type: integer
+    label: CPU
+    configurable: true
+    default: 2
+    constraints:
+      min: 1
+      power_of_two: true
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    label: VM credentials
+    default:
+      identity: vcap
+  manifest: |
+    hadoop:
+      namenode:
+        num_dfs_replicas: (( .properties.replication.value ))
+        max_replication: (( .properties.max_replication.value ))
+        trash_interval: (( .properties.trash_interval.value ))
+        handler_count: (( .properties.handler_count.value ))
+        blocksize: (( .properties.dfs_blocksize.value ))
+        checkpoint_size: (( .properties.checkpoint_size.value ))      
+      yarn:
+        scheduler_minimum_allocation_mb: (( .properties.scheduler_minimum_allocation_mb.value ))
+        scheduler_minimum_allocation_vcores: (( .properties.scheduler_minimum_allocation_vcores.value ))
+      mapreduce:
+        map_java_opts: (( .properties.map_java_opts.value ))
+        reduce_java_opts: (( .properties.reduce_java_opts.value ))
+      nodemanager:
+        resource_memory_mb: (( .properties.resource_memory_mb.value ))
+        resource_cpu_vcores: (( .properties.resource_cpu_vcores.value ))
+        vmem_pmem_ratio: (( .properties.vmem_pmem_ratio.value ))
+    spark:
+      master:
+        port: 7077
+      deploy:
+        zookeeper:
+          dir: /spark
+      driver:
+        memory: (( .properties.spark_driver_memory.value ))
+      executor:
+        memory: (( .properties.spark_executor_memory.value ))
+      worker:
+        dir: /var/vcap/store/spark/worker
+      local:
+        dirs: /var/vcap/store/spark/local
+    nosql:
+      mongodb: 
+        host: (( .properties.spark_mongodb_host.value ))
+        port: (( .properties.spark_mongodb_port.value ))
+        db: (( .properties.spark_mongodb_db.value ))
+        collection: (( .properties.spark_mongodb_collection.value ))
+property_blueprints:
+- name: replication
+  type: integer
+  default: 3
+  configurable: true
+- name: max_replication
+  type: string
+  default: 50
+  configurable: true
+- name: trash_interval
+  type: string
+  default: 1440
+  configurable: true
+- name: handler_count
+  type: string
+  default: 100
+  configurable: true
+- name: dfs_blocksize
+  type: string
+  default: 134217728
+  configurable: true
+- name: checkpoint_size
+  type: string
+  default: 0.5
+  configurable: true
+- name: scheduler_minimum_allocation_mb
+  type: string
+  default: 1024
+  configurable: true
+- name: scheduler_minimum_allocation_vcores
+  type: string
+  default: 1
+  configurable: true
+- name: map_java_opts
+  type: string
+  default: -Xmx1024M
+  configurable: true
+- name: reduce_java_opts
+  type: string
+  default: -Xmx2560M
+  configurable: true
+- name: resource_memory_mb
+  type: string
+  default: 8192
+  configurable: true
+- name: resource_cpu_vcores
+  type: string
+  default: 8
+  configurable: true
+- name: vmem_pmem_ratio
+  type: string
+  default: 2.1
+  configurable: true
+- name: autopurge_purge_interval
+  type: string
+  default: 24
+  configurable: true
+- name: autopurge_snap_retain_count
+  type: string
+  default: 3
+  configurable: true
+- name: client_port
+  type: string
+  default: 2181
+  configurable: true
+- name: cnx_timeout
+  type: string
+  default: 5
+  configurable: true
+- name: election_algorim
+  type: string
+  default: 3
+  configurable: true
+- name: global_outstanding_limit
+  type: string
+  default: 1000
+  configurable: true
+- name: init_limit
+  type: string
+  default: 5
+  configurable: true
+- name: leader_election_port
+  type: string
+  default: 3888
+  configurable: true
+- name: max_client_connections
+  type: string
+  default: 60
+  configurable: true
+- name: max_session_timeout
+  type: string
+  default: 40000 
+  configurable: true
+- name: min_session_timeout
+  type: string
+  default: 4000
+  configurable: true
+- name: pre_allocation_size
+  type: string
+  default: 65536
+  configurable: true
+- name: snap_count
+  type: string
+  default: 100000
+  configurable: true
+- name: sync_limit
+  type: string
+  default: 2
+  configurable: true
+- name: tick_time
+  type: string
+  default: 2000
+  configurable: true
+- name: warning_threshold_ms
+  type: string
+  default: 1000
+  configurable: true
+- name: spark_driver_memory
+  type: string
+  default: 2g
+  configurable: true
+- name: spark_executor_memory
+  type: string
+  default: 2g
+  configurable: true
+- name: spark_mongodb_host
+  type: string
+  default: 127.0.0.1
+  configurable: true
+- name: spark_mongodb_port
+  type: string
+  default: 27017
+  configurable: true
+- name: spark_mongodb_db
+  type: string
+  default: test
+  configurable: true
+- name: spark_mongodb_collection
+  type: string
+  default: test
+  configurable: true
