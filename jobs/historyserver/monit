@@ -1,5 +1,5 @@
 check process historyserver
   with pidfile /var/vcap/sys/run/historyserver/historyserver.pid
-  start program "/var/vcap/jobs/historyserver/bin/monit_debugger historyserver_ctl '/var/vcap/jobs/historyserver/bin/historyserver_ctl start'"
+  start program "/var/vcap/jobs/historyserver/bin/monit_debugger historyserver_ctl '/var/vcap/jobs/historyserver/bin/historyserver_ctl start'" with timeout 60 seconds
   stop program "/var/vcap/jobs/historyserver/bin/monit_debugger historyserver_ctl '/var/vcap/jobs/historyserver/bin/historyserver_ctl stop'"
   group vcap

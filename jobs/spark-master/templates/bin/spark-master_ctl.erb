@@ -34,7 +34,7 @@ case $1 in
     ;;
 
   stop)
-    kill `cat $PIDFILE`
+    kill_and_wait $PIDFILE 
 
     ;;
   *)
