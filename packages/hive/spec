@@ -1,0 +1,9 @@
+---
+name: hive
+
+dependencies:
+  - java
+  - hadoop
+
+files:
+- hive/apache-hive-1.2.2-bin.tar.gz

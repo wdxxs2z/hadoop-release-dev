@@ -1,0 +1,14 @@
+# abort script on any command that exits with a non zero value
+set -e
+set -u
+
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+
+export HOME=/var/vcap
+
+
+PATH=/var/vcap/packages/hadoop/bin:$PATH
+
+tar xfv hive/apache-hive-1.2.2-bin.tar.gz
+
+cp -a hive-1.2.2-bin/* $BOSH_INSTALL_TARGET

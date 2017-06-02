@@ -1,0 +1,8 @@
+---
+name: kerberos
+
+dependencies: []
+
+files:
+- byacc/byacc.tar.gz
+- kerberos/krb5-1.15.1.tar.gz

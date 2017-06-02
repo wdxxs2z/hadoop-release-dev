@@ -1,0 +1,21 @@
+# abort script on any command that exits with a non zero value
+set -e
+set -u
+
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+
+export HOME=/var/vcap
+
+echo "Building yacc."
+tar zxf byacc/byacc.tar.gz
+cd ${BOSH_COMPILE_TARGET}/byacc-20170430
+mkdir ${BOSH_INSTALL_TARGET}/yacc
+./configure --prefix=${BOSH_INSTALL_TARGET}/yacc
+make -j${CPUS} && make install
+export PATH=${BOSH_INSTALL_TARGET}/yacc/bin:$PATH
+
+echo "Building krb5."
+tar zxf kerberos/krb5-1.15.1.tar.gz
+cd ${BOSH_COMPILE_TARGET}/kerberos/krb5-1.15.1/src
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make -j${CPUS} && make install
