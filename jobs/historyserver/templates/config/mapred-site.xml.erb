@@ -41,11 +41,11 @@
   </property>
   <property>
     <name>mapreduce.jobhistory.address</name>
-    <value><%= link('jobhistory').instances[0].address %>:<%= link('jobhistory').p('hadoop.jobhistory.port') %></value>
+    <value><%= <%= spec.address %>:<%= link('jobhistory').p('hadoop.jobhistory.port') %></value>
   </property>
   <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value><%= link('jobhistory').instances[0].address %>:<%= link('jobhistory').p('hadoop.jobhistory.webapp_port') %></value>
+    <value><%= spec.address %>:<%= link('jobhistory').p('hadoop.jobhistory.webapp_port') %></value>
   </property>
   <property>
     <name>mapreduce.jobhistory.done-dir</name>

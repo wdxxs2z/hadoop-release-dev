@@ -40,6 +40,9 @@ id $MAPRED_USER &>/dev/null || useradd -s /sbin/nologin -r -M $MAPRED_USER -G $H
 chown --recursive $MAPRED_USER:$HADOOP_GROUP $LOG_DIR
 chown --recursive $MAPRED_USER:$HADOOP_GROUP $RUN_DIR
 
+# Set the hostname
+hostname <%=discover_external_ip %>
+
 chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /mr-history/tmp
 chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -chmod -R 1777 /mr-history/tmp
 chpst -u $HDFS_USER:$HADOOP_GROUP hadoop fs -mkdir -p /mr-history/done
